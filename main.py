@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from datetime import datetime
 import json
 import requests as req
@@ -16,13 +17,13 @@ def logged(namefile, t_start):
                 'kwargs': kwargs,
                 'result': result
             }
-            with open(f'{namefile}.txt', 'a') as out:
+            with open(f'{namefile}.json', 'a', encoding='utf-8') as out:
                 json.dump(
                     f'{log["time"]}:'
                     f'{log["name_func"]}:'
                     f'{log["args"]}:'
                     f'{log["kwargs"]}:'
-                    f'{log["result"]}\n', out)
+                    f'{log["result"]}', out)
             return result
 
         return decorated_func
